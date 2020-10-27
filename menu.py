@@ -24,9 +24,8 @@ def menu():
 def search_toys():
 def declutter():
 def add_toy():
-def edit_toy():
-	global toys #to access and modify the global variable toys
-
+def edit_toy(RandomToy): #RandomToy should be the list containing the dictionaries
+	toys = RandomToy
 	#function within a function in order to access the names in the list of toys
 	def get_names(): 
 		toys_names=[] #places names in a list and returns a list
@@ -50,10 +49,10 @@ def edit_toy():
 
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
-		toy_name = input("\nEnter toy's name. \n")
+		toy_name = input("\nEnter toy's name: ")
 
 		#shows the list of toys if toy is not found
-		elif toy_name.lower() not in get_names(): 
+		if toy_name.lower() not in get_names(): 
 			print("\nOh no! Toy not found :(\nYour toys are:\n")
 			for dicts in toys:
 				for attribute in dicts:
@@ -113,8 +112,12 @@ Toy Attributes:
 			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
 			elif command == 5:
 				#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
-				toys[get_index(toy_name)]["FirstAppearance"] = int(input("\nWhat Toy Story movie did the toy first appear? ")) 
-				print("First Movie Appearance attribute successfully edited!")
+				movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
+				if movie_number < 5 and movie_number > 0:
+					toys[get_index(toy_name)]["FirstAppearance"] = movie_number
+					print("First Movie Appearance attribute successfully edited!")
+				else:
+					print("Changes failed. Valid inputs are only 1, 2, 3, or 4")
 			
 			#CODE BLOCK TO EXIT EDITING
 			elif command == 0:
@@ -126,7 +129,8 @@ Toy Attributes:
 						print("First Seen in Toy Story", toys[get_index(toy_name)][attribute], end="")
 					else: 
 						print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
-				break
+				print("\n\n")
+				return toys[get_index(toy_name)]
 		
 		except:
 			print("There seems to be an error in the input") #if there is an error, print this. Example: if a string was given for height
