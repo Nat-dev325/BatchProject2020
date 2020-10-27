@@ -11,8 +11,8 @@ def menu():
 		+ " (3)Add Toy\n"
 		+ " (4)Edit Toy\n"
 		+ " (5)Playtime\n"
-    + " (6)Select Toy\n"
-    + " (7)Print Toys\n"
+    		+ " (6)Select Toy\n"
+    		+ " (7)Print Toys\n"
 		+ " (8)Save Current Lineup\n"
 		+ " (9)Load Last Lineup\n"
 		+ " (10)Bedtime\n"
@@ -30,6 +30,31 @@ def declutter():
 def add_toy():
 def edit_toy():
 def playtime():
+	print(
+		"\n==SUBMENU=======================================\n"
+		+ " (1)Bubble Sort\n"
+		+ " (2)Merge Sort\n"
+		+ " (3)Insertion Sort\n"
+		+ " (4)Selection Sort\n"
+		+ " (5)Quick Sort\n"
+		+ "================================================\n"
+		)
+	command_check = False
+    	while command_check == False: #This loop checks if the input is valid
+       		command = int(input("Enter command number(1-5): "))
+        	if command in range(1,6):
+            		command_check = True
+    		return command
+	if command == 1:
+        	print(BubbleSort(toys))
+    	elif command == 2:
+        	print(MergeSort(toys))
+    	elif command == 3:
+        	print(InsertionSort(toys))
+    	elif command == 4:
+        	print(SelectionSort(toys))
+    	elif command == 5:
+        	print(QuickSort(toys))
 def select_toy():
 def print_toys():
 def save():
