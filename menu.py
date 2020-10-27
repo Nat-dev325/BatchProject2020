@@ -36,7 +36,6 @@ def edit_toy():
 
 	#function in order to get the index of toy with the variable "name"
 	def get_index(name): 
-		global toys
 		index = 0
 		for toy_dict in toys:
 			if name.lower() == toy_dict["Name"].lower():
@@ -51,11 +50,7 @@ def edit_toy():
 
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
-		toy_name = input("\nEnter toy's name. \nInput '0' to cancel editing\n")
-
-		#Cancels editing the toy and skips the rest of the function
-		if toy_name == "0": 
-			return print("Successfully cancelled toy editing!")
+		toy_name = input("\nEnter toy's name. \n")
 
 		#shows the list of toys if toy is not found
 		elif toy_name.lower() not in get_names(): 
@@ -85,12 +80,12 @@ Toy Attributes:
 			
 			command = int(input("Which attribute do you want to edit?\nEnter command number: "))
 			
-			#CODE BLOCK FOR CHAGNING TOY NAME
+			#CODE BLOCK FOR CHANGING TOY NAME
 			if command == 1: 
 				new_toys_name = input("\nWhat is your toy's new name? ") 
 
 				#checks if there is already a toy in the list of toys with that name
-				if new_toys_name in get_names(): 
+				if new_toys_name.lower() in get_names(): 
 					print("That toy already exists!")
 			
 				else: 	#updates the dictionary of index from function get_index() and the key of "Name"
@@ -98,24 +93,24 @@ Toy Attributes:
 					print("Toy's name successfully edited!")
 					toy_name = new_toys_name #needed part in order to update the variable toy_name
 			
-			#CODE BLOCK FOR CHAGNING TOY SPECIES
+			#CODE BLOCK FOR CHANGING TOY SPECIES
 			elif command == 2:
 				#updates the dictionary of index from function get_index() and the key of "Species"
 				toys[get_index(toy_name)]["Species"] = input("\nWhat is your toy's new species? ") 
 				print("Species attribute successfully edited!")
 			
-			#CODE BLOCK FOR CHAGNING TOY HEIGHT
+			#CODE BLOCK FOR CHANGING TOY HEIGHT
 			elif command == 3:
 				 #updates the dictionary of index from function get_index() and the key of "Height"
 				toys[get_index(toy_name)]["Height"] = float(input("\nWhat is your toy's new height? "))
 				print("Height attribute successfully edited!")
 			
-			#CODE BLOCK FOR CHAGNING TOY FEET
+			#CODE BLOCK FOR CHANGING TOY FEET
 			elif command == 4:
 				toys[get_index(toy_name)]["Feet"] = int(input("\nWhat is your toy's new number of feet? "))
 				print("Number of feet attribute successfully edited!")
 			
-			#CODE BLOCK FOR CHAGNING MOVIE APPEARANCE
+			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
 			elif command == 5:
 				#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
 				toys[get_index(toy_name)]["FirstAppearance"] = int(input("\nWhat Toy Story movie did the toy first appear? ")) 
