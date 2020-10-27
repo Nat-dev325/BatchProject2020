@@ -165,7 +165,31 @@ def playtime():
 def select_toy():
 def print_toys():
 def save():
+	fileHandler = open ("toys.txt", "w")
+	for i in range (len(toys)):
+		name = toys[i]['Name']
+		species = toys[i]['Species']
+		height = str(toys[i]['Height'])
+		feet = str(toys[i]['Feet'])
+		firstappearance = str(toys[i]['FirstAppearance'])
+		fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
+
+	fileHandler.close()
+
 def load():
+	fileHandler = open ("toys.txt", "r")
+	toys.clear()
+	for line in fileHandler:
+		toy_data = line[:-1].split(",")
+		dict_toy = {}
+		dict_toy["Name"] = toy_data[0]
+		dict_toy["Species"] = toy_data[1]
+		dict_toy["Height"] = toy_data[2]
+		dict_toy["Feet"] = toy_data[3]
+		dict_toy["FirstAppearance"] = toy_data[4]
+		toys.append(dict_toy)
+	
+	fileHandler.close()
 
 toys = [
     {"Name":"Woody","Species":"Human","Height":15.8,"Feet":2,"FirstAppearance":1},
