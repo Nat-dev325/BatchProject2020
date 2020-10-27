@@ -165,31 +165,31 @@ def playtime():
 def select_toy():
 def print_toys():
 def save():
-	fileHandler = open ("toys.txt", "w")
-	for i in range (len(toys)):
-		name = toys[i]['Name']
-		species = toys[i]['Species']
-		height = str(toys[i]['Height'])
-		feet = str(toys[i]['Feet'])
-		firstappearance = str(toys[i]['FirstAppearance'])
+	fileHandler = open ("toys.txt", "w")				#make/access the file 'toys.txt' with writable mode
+	for i in range (len(toys)):							#for every element in the list 'toys'
+		name = toys[i]['Name']							#save the value of the current element 'Name' to name
+		species = toys[i]['Species']					#same
+		height = str(toys[i]['Height'])					#same
+		feet = str(toys[i]['Feet'])						#same
+		firstappearance = str(toys[i]['FirstAppearance']) #same
 		fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
-
-	fileHandler.close()
+														#write the data in the file
+	fileHandler.close() 								#close naten syepms
 
 def load():
-	fileHandler = open ("toys.txt", "r")
-	toys.clear()
-	for line in fileHandler:
-		toy_data = line[:-1].split(",")
-		dict_toy = {}
-		dict_toy["Name"] = toy_data[0]
+	fileHandler = open ("toys.txt", "r")				#access the file 'toys.txt' with read mode
+	toys.clear()										#clear the existing elements to have the file data only
+	for line in fileHandler:							#accessing every line in the file						
+		toy_data = line[:-1].split(",")					#make list's elements by splitting using ","
+		dict_toy = {}									#create a dict that will contain the current line data
+		dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
 		dict_toy["Species"] = toy_data[1]
 		dict_toy["Height"] = toy_data[2]
 		dict_toy["Feet"] = toy_data[3]
 		dict_toy["FirstAppearance"] = toy_data[4]
-		toys.append(dict_toy)
+		toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
 	
-	fileHandler.close()
+	fileHandler.close()									#close naten ulit syemps
 
 toys = [
     {"Name":"Woody","Species":"Human","Height":15.8,"Feet":2,"FirstAppearance":1},
