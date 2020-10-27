@@ -24,8 +24,8 @@ def menu():
 def search_toys():
 def declutter():
 def add_toy():
-def edit_toy(RandomToy): #RandomToy should be the list containing the dictionaries
-	toys = RandomToy
+def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
+	toys = toys_list
 	#function within a function in order to access the names in the list of toys
 	def get_names(): 
 		toys_names=[] #places names in a list and returns a list
