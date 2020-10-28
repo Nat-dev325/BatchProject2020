@@ -45,3 +45,27 @@ def InsertionSort(toys):
 		toys[j + 1] = key
 
 	return toys
+
+
+#Quick Sort
+def quickSort(list,low,high):
+    
+    def partition(list, low, high):
+        i = (low-1)
+        temp = list[high]
+        pivot = temp["NumFeet"]
+        for j in range(low, high):
+            temp = list[j]
+            if temp["NumFeet"] < pivot:         #determines which number of feet is smaller
+                i = i+1
+                list[i] , list[j] = list[j] , list[i]       #swap
+        list[i+1] , list[high] = list[high] , list[i+1]
+        return (i+1)
+
+    if len(list) == 1:          #returns list if it has only 1 toy
+        return list
+    elif high > low:
+        parted = partition(list,low,high)
+
+        quickSort(list,parted+1,high)       #sorts by numfeet before parting the list
+        quickSort(list,low,parted-1)        #sorts by numfeet after parting the list
