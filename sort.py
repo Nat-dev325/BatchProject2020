@@ -47,10 +47,8 @@ def InsertionSort(toys):
 	return toys
 
 
-#Quick Sort
-def quickSort(list,low,high):
-    
-    def partition(list, low, high):
+#Function for Quick Sort
+def partition(list, low, high):
         i = (low-1)
         temp = list[high]
         pivot = temp["NumFeet"]
@@ -62,6 +60,8 @@ def quickSort(list,low,high):
         list[i+1] , list[high] = list[high] , list[i+1]
         return (i+1)
 
+#Quick Sort
+def quickSort(list,low,high):
     if len(list) == 1:          #returns list if it has only 1 toy
         return list
     elif high > low:
