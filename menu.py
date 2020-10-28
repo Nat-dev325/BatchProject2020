@@ -134,8 +134,8 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 	if len(toys) == 0:
 		return print("There are no toys to edit :(")
     
-    print("==========EDITING TOYS IN SELECTION============")
-    toy_name = ""
+ 	print("==========EDITING TOYS IN SELECTION============")
+   	toy_name = ""
         
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
@@ -144,18 +144,18 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 		#shows the list of toys if toy is not found
 		if toy_name.lower() not in get_names(): 
 			print("\nOh no! Toy not found :(\nYour toys are:\n")
-            display = ""
-            for i in range(0,len(toys)):
-                for j in toys[i]:
-                    if j == "Name":
-                        display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
-                        continue
-                    if j == "Feet":
-                        display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
-                        continue
-                    display += str(j) + ": " + '{0: <16}'.format(str(toys[i][j]))
-                display += "\n"
-            print(display)
+			display = ""
+			for i in range(0,len(toys)):
+				for j in toys[i]:
+					if j == "Name":
+						display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
+						continue
+					if j == "Feet":
+						display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
+						continue
+					display += str(j) + ": " + '{0: <16}'.format(str(toys[i][j]))
+				display += "\n"
+			print(display)
 			# for dicts in toys:
 			# 	for attribute in dicts:
 			# 		if attribute == "FirstAppearance":
