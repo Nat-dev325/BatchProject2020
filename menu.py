@@ -134,7 +134,7 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 	if len(toys) == 0:
 		return print("There are no toys to edit :(")
     
- 	print("==========EDITING TOYS IN SELECTION============")
+ 	else: print("==========EDITING TOYS IN SELECTION============")
    	toy_name = ""
         
 	#while loop to check if the toy name exists
