@@ -85,7 +85,9 @@ def declutter(toys): #function that removes a toy from the list
             print("\n")
             del toys[i] #deletes the dict of the given input
             return toys
-    else: print("\n" + toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list      
+    else: 
+        print("\n" + toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list
+        return toys     
 
 def addToys(collection):
     print("===========Adding Toy in Collection==========")
