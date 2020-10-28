@@ -232,11 +232,11 @@ Toy Attributes:
 def playtime(toys):
     print(
         "\n==SUBMENU=======================================\n"
-        + " (1)Bubble Sort\n"
-        + " (2)Merge Sort\n"
-        + " (3)Insertion Sort\n"
-        + " (4)Selection Sort\n"
-        + " (5)Quick Sort\n"
+        + " (1)Name (Bubble Sort)\n"
+        + " (2)Height (Merge Sort)\n"
+        + " (3)Species (Insertion Sort)\n"
+        + " (4)First Movie Appearance  (Selection Sort)\n"
+        + " (5)Number of Feet (Quick Sort)\n"
         + "================================================\n"
         )
     command_check = False
