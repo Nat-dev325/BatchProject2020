@@ -14,7 +14,7 @@ def menu():
             + " (7)Print Toys\n"
         + " (8)Save Current Lineup\n"
         + " (9)Load Last Lineup\n"
-        + " (10)Bedtime\n"
+        + " (0)Bedtime\n"
         + "================================================\n"
         )
     command_check = False
@@ -101,7 +101,7 @@ def addToys(collection):
     dictToy["FirstAppearance"] = firstAppearance
 
     # add dictToy to the original list of dictionaries
-    collection.append(dictToy)
+    #collection.append(dictToy)
 
     # notify the user that they have successfully added a toy
     print("\n" + name + " added in Collection!")
@@ -109,7 +109,7 @@ def addToys(collection):
     # print the attributes of the toy
     print(dictToy)
 
-    return collection
+    return dictToy
 
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
 	print("==========EDITING TOYS IN SELECTION============")
@@ -248,7 +248,7 @@ def playtime(toys):
     if command == 1:
         toys = sort.BubbleSort(toys)
     elif command == 2:
-        toys = sort.MergeSort(toys)
+        toys = sort.mergeSort(toys)
     elif command == 3:
         toys = sort.InsertionSort(toys)
     elif command == 4:
@@ -260,29 +260,28 @@ def playtime(toys):
 
 def select_toy(toys):
 	#the x is the last element in the list
-	x = toys[-1]
+	x = toys[0]
 	#a loop traversing though the keys and values of the last item in the list
 	for i,j in x.items():
 		#we return the last element in the list of toys
 		print(i, ": ", j)
-	#then we pop it
-	#toys.pop(len(toys)-1)
-	return(toys[-1])
+	return(toys[0])
 
 
-def print_toy (toys):
-	#checks if the list is not empty
-	if len(toys) == 0:
-		print("There are no toys in the list.")
-	else:
-		#will continue to print the Toy's attributes if the list is not empty
-		print("The toys: \n")
-		for i in range(len(toys)):
-			print("Name: ", toys[i]["Name"])
-			print("NumFeet: ", toys[i]["NumFeet"])
-			print("Species: ",toys[i]["Species"])
-			print("Height: ",toys[i]["Height"])
-			print("\n")
+def print_toy(toys):
+    #checks if the list is not empty
+    if len(toys) == 0:
+    	print("There are no toys in the list.")
+    #will continue to print the Toy's attributes if the list is not empty
+    else:
+        print("The toys: \n")
+        for i in range(len(toys)):
+            print("Name:", toys[i]["Name"])
+            print("Number of Feet:", toys[i]["NumFeet"])
+            print("Species:",toys[i]["Species"])
+            print("Height:",toys[i]["Height"])
+            print("First Appearance:", toys[i]["FirstAppearance"])
+            print("\n")
 
 def save(toys):
     #make/access the file 'toys.txt' with writable mode
