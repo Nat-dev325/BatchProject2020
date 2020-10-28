@@ -16,22 +16,23 @@ while True: #This loop is to ensure that the program does not just terminate aft
     if command == 1:
         menu.search_toys(toys)
     elif command == 2:
-        menu.declutter(toys)
+        toys = menu.declutter(toys)
     elif command == 3:
-        menu.addToys(toys)
+        added_toy = menu.addToys(toys)
+        toys.append(added_toy) 
     elif command == 4:
         menu.edit_toy(toys)
     elif command == 5:
         menu.playtime(toys)
     elif command == 6:
-        menu.select_toy(toys)
+        selected_toy = menu.select_toy(toys)
     elif command == 7:
-        menu.print_toys(toys)
+        menu.print_toy(toys)
     elif command == 8:
         menu.save(toys)
     elif command == 9:
         menu.load(toys)
-    elif command == 10:
+    elif command == 0:
         print(
             "\n================================================\n"
             + "It's bedtime! Sleep dreams!\n"
