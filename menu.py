@@ -134,8 +134,14 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 	#checks if there are toys in the first place. if none, ends the function
 	if len(toys) == 0:
 		return print("There are no toys to edit :(")
+<<<<<<< HEAD
+    
+ 	else: print("==========EDITING TOYS IN SELECTION============")
+   	toy_name = ""
+=======
 	
 	toy_name = ""
+>>>>>>> 40f5e01d0ad6510931bf06cce0d452ff49c59da5
         
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
