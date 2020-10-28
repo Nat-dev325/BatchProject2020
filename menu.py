@@ -114,6 +114,7 @@ def addToys(collection):
     return collection
 
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
+	print("==========EDITING TOYS IN SELECTION============")
 	toys = toys_list
 	#function within a function in order to access the names in the list of toys
 	def get_names(): 
@@ -133,9 +134,8 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 	#checks if there are toys in the first place. if none, ends the function
 	if len(toys) == 0:
 		return print("There are no toys to edit :(")
-    
- 	print("==========EDITING TOYS IN SELECTION============")
-   	toy_name = ""
+	
+	toy_name = ""
         
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
@@ -156,20 +156,13 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 					display += str(j) + ": " + '{0: <16}'.format(str(toys[i][j]))
 				display += "\n"
 			print(display)
-			# for dicts in toys:
-			# 	for attribute in dicts:
-			# 		if attribute == "FirstAppearance":
-			# 			print("(First Seen in Toy Story", dicts[attribute], end=")")
-			# 		else: print(attribute+":", dicts[attribute], end="\t")
-			# 	print()
-
-
 	print("Toy found!")
 	
 	#try except while true loop so that one can edit multiple attributes
 	while True: 
 		try:
 			print("""
+================================================
 Toy Attributes:
 	1. Name
 	2. Species
@@ -177,6 +170,7 @@ Toy Attributes:
 	4. Number of Feet
 	5. Movie of Character's First Appearance
 	0. Exit
+================================================
 			""")
 			
 			command = int(input("Which attribute do you want to edit?\nEnter command number: "))
