@@ -27,23 +27,21 @@ def menu():
 def search_toys(toys):
     return None
 
-#function that removes a toy from the list
-def declutter(toys):
-    toy_name = input("\nWhat toy do you want to remove? ")
-    #Finds the dictionary within the list that corresponds to the given input
-    for each_toy in toys:
-        if each_toy["Name"] == toy_name:
-            print("\n"+toy_name, "has been removed from the shelf\n") #Indicates that the object has been removed
-            for attribute in each_toy: #Displays the attributes of the object
-                print(attribute + ":" +str(each_toy[attribute]) +",", end=" ")
-            for i in range(len(toys)): #Delete/Removes the object from the list by finding a name that matches the given input  
-                if toys[i]["Name"] == toy_name:
-                    del toys[i]
-
-                    return toys
-            break   #prevents the iteration of the codes from "if each_toy" to "for i in range" and the else condition 
-                    #from manifesting if the Name is not corresponding to the current value of the "for each_toy" conditional
-    else: print(toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list
+def declutter(toys): #function that removes a toy from the list
+    x = input("\nWhat toy do you want to remove? ")
+    toy_name = string.capwords(x)
+    for i in range(len(toys)): #Finds the dictionary within the list that corresponds to the given input     
+        if toys[i]["Name"] == toy_name: #determines whether the name attribute in dict "i" matches the given input
+            print("\n"+ toy_name, "has been removed from the shelf\n")
+            for attribute in toys[i]:
+                print(attribute + ": " +str(toys[i][attribute]) +",", end=" ") #prints the attributes of the deleted object
+            print("\n")
+            del toys[i] #deletes the dict of the given input
+            print(toys) #FOR TESTING ONLY
+                        #to check if object is successfuly removed from the list
+                        #Remove this or add a // # // in front to prevent this code from manifesting
+            return toys
+    else: print("\n" + toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list      
 
 def addToys(collection):
     print("===========Adding Toy in Collection==========")
@@ -179,42 +177,46 @@ Toy Attributes:
 					print("That toy already exists!")
 				else:
 						#updates the dictionary of index from function get_index() and the key of "Name"
-						toys[get_index(toy_name)]["Name"] = new_toys_name 
+						toys[get_index(toy_name)]["Name"] = string.capwords(new_toys_name)
 						print("Toy's name successfully edited!")
 						toy_name = new_toys_name #needed part in order to update the variable toy_name
-		
+			
 			#CODE BLOCK FOR CHANGING TOY SPECIES
 			elif command == 2:
 			#updates the dictionary of index from function get_index() and the key of "Species"
-					toys[get_index(toy_name)]["Species"] = input("\nWhat is your toy's new species? ") 
+					toys[get_index(toy_name)]["Species"] = string.capwords(input("\nWhat is your toy's new species? "))
 					print("Species attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING TOY HEIGHT
+			
+			#CODE BLOCK FOR CHANGING TOY HEIGHT
 			elif command == 3:
-			 #updates the dictionary of index from function get_index() and the key of "Height"
+			#updates the dictionary of index from function get_index() and the key of "Height"
 			 		toys[get_index(toy_name)]["Height"] = float(input("\nWhat is your toy's new height? "))
 			 		print("Height attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING TOY FEET
+			
+			#CODE BLOCK FOR CHANGING TOY FEET
 			elif command == 4:
 				toys[get_index(toy_name)]["NumFeet"] = int(input("\nWhat is your toy's new number of feet? "))
 				print("Number of feet attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
+			
+			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
 			elif command == 5:
 			#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
-					movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
-					if movie_number < 5 and movie_number > 0:
-						toys[get_index(toy_name)]["FirstAppearance"] = movie_number
-						print("First Movie Appearance attribute successfully edited!")
-					else:
-						print("Changes failed. Valid inputs are only 1, 2, 3, or 4")
-		
-		#CODE BLOCK TO EXIT EDITING
+					while True:
+						try:
+							movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
+							if movie_number < 5 and movie_number > 0:
+								toys[get_index(toy_name)]["FirstAppearance"] = movie_number
+								print("First Movie Appearance attribute successfully edited!")
+								break
+							else: print("Please enter a Toy Story movie")
+						except:
+							print("Please enter a Toy Story movie")
+			
+			#CODE BLOCK TO EXIT EDITING
 			elif command == 0:
 				print("\n\nChanges have been saved!\nCurrent toy details are as follows:\n")
 
-			#For loop to go through all attributes of said toy for printing
+				#For loop to go through all attributes of said toy for printing
 				for attribute in toys[get_index(toy_name)]:
 					if attribute == "FirstAppearance":
 						print("First Seen in Toy Story", toys[get_index(toy_name)][attribute], end="")
@@ -222,8 +224,10 @@ Toy Attributes:
 						print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
 				print("\n\n")
 				return toys[get_index(toy_name)]
+			
 		except:
 				print("There seems to be an error in the input") #if there is an error, print this. Example: if a string was given for height
+
 
 def playtime(toys):
     print(
@@ -305,9 +309,9 @@ def load(toys):
         dict_toy = {}									
         dict_toy["Name"] = toy_data[0]					
         dict_toy["Species"] = toy_data[1]
-        dict_toy["Height"] = toy_data[2]
-        dict_toy["NumFeet"] = toy_data[3]
-        dict_toy["FirstAppearance"] = toy_data[4]
+        dict_toy["Height"] = float(toy_data[2])
+        dict_toy["NumFeet"] = int(toy_data[3])
+        dict_toy["FirstAppearance"] = int(toy_data[4])
         #appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)							
     fileHandler.close()
