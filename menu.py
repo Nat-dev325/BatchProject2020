@@ -112,7 +112,7 @@ def addToys(collection):
     return dictToy
 
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
-	print("==========EDITING TOYS IN SELECTION============")
+	print("==========Editing Toy in Collection============")
 	toys = toys_list
 	#function within a function in order to access the names in the list of toys
 	def get_names(): 
