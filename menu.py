@@ -312,9 +312,9 @@ def load(toys):
         dict_toy = {}									
         dict_toy["Name"] = toy_data[0]					
         dict_toy["Species"] = toy_data[1]
-        dict_toy["Height"] = toy_data[2]
-        dict_toy["NumFeet"] = toy_data[3]
-        dict_toy["FirstAppearance"] = toy_data[4]
+        dict_toy["Height"] = float(toy_data[2])
+        dict_toy["NumFeet"] = int(toy_data[3])
+        dict_toy["FirstAppearance"] = int(toy_data[4])
         #appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)							
     fileHandler.close()
