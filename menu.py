@@ -26,6 +26,19 @@ def menu():
 
 # Search for Toy
 def searchToy(collection):
+    def search(attribute, toSearch):
+        search_count = 0
+        print()
+        # check each element in collection
+        for i in range(len(collection)):
+            # print the element if the toSearch is found in collection[i][attribute]
+            if toSearch == collection[i][attribute]:
+                print(collection[i])
+                search_count += 1
+        # if nothing is printed, print toSearch does not exist
+        if search_count == 0:
+            print("%s does not exist." % toSearch)
+
     # a sub-menu showing the main criteria of the attributes from which a user can choose from
     print("Which attribute do you want to search from? ")
     print("[1] Name")
@@ -33,7 +46,7 @@ def searchToy(collection):
     print("[3] Height")
     print("[4] Number of Feet")
     print("[5] First Appearance")
-    # asking for the user choice
+    # asking for the user choice and force to enter a valid input
     while True:
         try:
             user_choice = int(input("Enter your choice: "))
@@ -42,37 +55,54 @@ def searchToy(collection):
             break
         except:
             print("Enter a number/integer.")
-    # the following if statements are used to store values in the attribute variable wherein each values corresponds to each keys of the dictionaries.
-    while True:
-        if user_choice == 1:
-            attribute = "Name"
-        elif user_choice == 2:
-            attribute = "Species"
-        elif user_choice == 3:
-            attribute = "Height"
-        elif user_choice == 4:
-            attribute = "Feet"
-        elif user_choice == 5:
-            attribute = "FirstAppearance"
 
-        # asking for the specific attribute of the toy from the user
-        specific_attribute = input(
-            "Enter the specific attribute you want to search for: "
-        )
-        print_count = 0
-        # a for loop with the range of 0 to the length of the list is used to be able to access each dictionaries in the list
-        for i in range(0, len(collection)):
-            values = str(collection[i][attribute]).lower()
+    # Search using attribute name
+    if user_choice == 1:
+        attribute = "Name"
+        toSearch = input("Enter toy's name: ")
+        search(attribute, string.capwords(toSearch))
 
-            if specific_attribute.lower() in values:
-                # the code "collection[i][attribute]" is utilized to access each values of the given key which is stored in the attribute variable.
-                if specific_attribute.lower() == str(collection[i][attribute]).lower():
-                    # if the specific attribute given by the user is equal to the value of the key stored in the attribute variable, then it will print all dictionary which includes that value.
-                    print(collection[i])
-                    print_count += 1
-        if print_count == 0:
-            print("Sorry, your given attribute does not exist.")
-        break
+    # Search using attribute species
+    elif user_choice == 2:
+        attribute = "Species"
+        toSearch = input("Enter toy's species: ")
+        search(attribute, string.capwords(toSearch))
+
+    # Search using attribute height
+    elif user_choice == 3:
+        attribute = "Height"
+        # Force input a float
+        while True:
+            try:
+                toSearch = float(input("What is the toy's height? "))
+                break
+            except ValueError:
+                print("Invalid input. Enter a number.")
+        search(attribute, toSearch)
+
+    # Search using attribute feet
+    elif user_choice == 4:
+        attribute = "NumFeet"
+        # Force input an integer
+        while True:
+            try:
+                toSearch = int(input("What is the toy's number of feet? "))
+                break
+            except ValueError:
+                print("Invalid input. Enter an integer.")
+        search(attribute, toSearch)
+
+    # Search using attribute FirstAppearance
+    elif user_choice == 5:
+        attribute = "FirstAppearance"
+        # Force input an integer
+        while True:
+            try:
+                toSearch = int(input("What is the toy's first movie appearance? "))
+                break
+            except ValueError:
+                print("Invalid input. Enter an integer.")
+        search(attribute, toSearch)
 
 def declutter(toys): #function that removes a toy from the list
     x = input("\nWhat toy do you want to remove? ")
