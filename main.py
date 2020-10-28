@@ -1,29 +1,36 @@
 '''
 -Documentation here-
 '''
-
+import menu
+import os
+toys = [
+    {"Name":"Woody","Species":"Human","Height":15.8,"Feet":2,"FirstAppearance":1},
+    {"Name":"Jessie","Species":"Human","Height":13.4,"Feet":2,"FirstAppearance":2},
+    {"Name":"Buzz Lightyear","Species":"Human","Height":11.43,"Feet":2,"FirstAppearance":1}
+]
+os.system("cls")
 #This is the start of the main function
 while True: #This loop is to ensure that the program does not just terminate after a single command
-    command = menu()
+    command = menu.menu()
     
     if command == 1:
-        search_toys(toys)
+        menu.search_toys(toys)
     elif command == 2:
-        declutter(toys)
+        menu.declutter(toys)
     elif command == 3:
-        add_toy(toys)
+        menu.add_toy(toys)
     elif command == 4:
-        edit_toy(toys)
+        menu.edit_toy(toys)
     elif command == 5:
-        playtime(toys)
+        menu.playtime(toys)
     elif command == 6:
-        select_toy(toys)
+        menu.select_toy(toys)
     elif command == 7:
-        print_toys(toys)
+        menu.print_toys(toys)
     elif command == 8:
-        save(toys)
+        menu.save(toys)
     elif command == 9:
-        load(toys)
+        menu.load(toys)
     elif command == 10:
         print(
             "\n================================================\n"

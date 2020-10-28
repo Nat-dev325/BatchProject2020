@@ -1,4 +1,6 @@
 #This contains all of the functions for main.py
+import sort
+
 def menu():
     print(
         "\n==MENU==========================================\n"
@@ -21,9 +23,12 @@ def menu():
             command_check = True
     return command
 
-def search_toys():
-def declutter():
-def add_toy():
+def search_toys(toys):
+    return None
+def declutter(toys):
+    return None
+def add_toy(toys):
+    return None
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
 	toys = toys_list
 	#function within a function in order to access the names in the list of toys
@@ -135,7 +140,7 @@ Toy Attributes:
 		except:
 			print("There seems to be an error in the input") #if there is an error, print this. Example: if a string was given for height
 
-def playtime():
+def playtime(toys):
     print(
         "\n==SUBMENU=======================================\n"
         + " (1)Bubble Sort\n"
@@ -146,80 +151,54 @@ def playtime():
         + "================================================\n"
         )
     command_check = False
-        while command_check == False: #This loop checks if the input is valid
-            command = int(input("Enter command number(1-5): "))
-            if command in range(1,6):
-                    command_check = True
-            return command
-    if command == 1:
-            print(BubbleSort(toys))
-        elif command == 2:
-            print(MergeSort(toys))
-        elif command == 3:
-            print(InsertionSort(toys))
-        elif command == 4:
-            print(SelectionSort(toys))
-        elif command == 5:
-            print(QuickSort(toys))
-def select_toy():
-def print_toys():
-def save():
-	fileHandler = open ("toys.txt", "w")				#make/access the file 'toys.txt' with writable mode
-	for i in range (len(toys)):							#for every element in the list 'toys'
-		name = toys[i]['Name']							#save the value of the current element 'Name' to name
-		species = toys[i]['Species']					#same
-		height = str(toys[i]['Height'])					#same
-		feet = str(toys[i]['NumFeet'])						#same
-		firstappearance = str(toys[i]['FirstAppearance']) #same
-		fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
-														#write the data in the file
-	fileHandler.close() 								#close naten syepms
 
-def load():
-	fileHandler = open ("toys.txt", "r")				#access the file 'toys.txt' with read mode
-	toys.clear()										#clear the existing elements to have the file data only
-	for line in fileHandler:							#accessing every line in the file						
-		toy_data = line[:-1].split(",")					#make list's elements by splitting using ","
-		dict_toy = {}									#create a dict that will contain the current line data
-		dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
-		dict_toy["Species"] = toy_data[1]
-		dict_toy["Height"] = toy_data[2]
-		dict_toy["NumFeet"] = toy_data[3]
-		dict_toy["FirstAppearance"] = toy_data[4]
-		toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
-	
-	fileHandler.close()									#close naten ulit syemps
-
-toys = [
-    {"Name":"Woody","Species":"Human","Height":15.8,"Feet":2,"FirstAppearance":1},
-    {"Name":"Jessie","Species":"Human","Height":13.4,"Feet":2,"FirstAppearance":2},
-    {"Name":"Buzz Lightyear","Species":"Human","Height":11.43,"Feet":2,"FirstAppearance":1}
-]
-while True: #This loop is to ensure that the program does not just terminate after a single command
-    command = menu()
-    
+    while command_check == False: #This loop checks if the input is valid
+        command = int(input("Enter command number(1-5): "))
+        if command in range(1,6):
+                command_check = True
     if command == 1:
-        search_toys(toys)
+        toys = sort.BubbleSort(toys)
     elif command == 2:
-        declutter(toys)
+        toys = sort.MergeSort(toys)
     elif command == 3:
-        add_toy(toys)
+        toys = sort.InsertionSort(toys)
     elif command == 4:
-        edit_toy(toys)
+        toys = sort.SelectionSort(toys)
     elif command == 5:
-        playtime(toys)
-    elif command == 6:
-        select_toy(toys)
-    elif command == 7:
-        print_toys(toys)
-    elif command == 8:
-        save(toys)
-    elif command == 9:
-        load(toys)
-    elif command == 10:
-        print(
-            "\n================================================\n"
-            + "It's bedtime! Sleep dreams!\n"
-            + "================================================\n"
-            )
-        break
+        toys = sort.QuickSort(toys)
+    print(sort.display(toys))
+    return toys
+
+def select_toy():
+    return None
+def print_toys():
+    return None
+
+def save(toys):
+
+    fileHandler = open ("toys.txt", "w")				#make/access the file 'toys.txt' with writable mode
+    for i in range (len(toys)):							#for every element in the list 'toys'
+        name = toys[i]['Name']							#save the value of the current element 'Name' to name
+        species = toys[i]['Species']					#same
+        height = str(toys[i]['Height'])					#same
+        feet = str(toys[i]['NumFeet'])					#same
+        firstappearance = str(toys[i]['FirstAppearance']) #same
+        fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
+    													#write the data in the file
+    fileHandler.close()
+    return toys
+
+def load(toys):
+    fileHandler = open ("toys.txt", "r")				#access the file 'toys.txt' with read mode
+    toys.clear()										#clear the existing elements to have the file data only
+    for line in fileHandler:							#accessing every line in the file						
+        toy_data = line[:-1].split(",")					#make list's elements by splitting using ","
+        dict_toy = {}									#create a dict that will contain the current line data
+        dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
+        dict_toy["Species"] = toy_data[1]
+        dict_toy["Height"] = toy_data[2]
+        dict_toy["NumFeet"] = toy_data[3]
+        dict_toy["FirstAppearance"] = toy_data[4]
+        toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
+    fileHandler.close()
+    return toys

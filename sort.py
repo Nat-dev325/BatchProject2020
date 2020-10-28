@@ -9,19 +9,7 @@ def BubbleSort(toys):
             if toys[j]["Name"] > toys[j+1]["Name"]:
                 toys[j], toys[j+1] = toys[j+1], toys[j]
 
-    display = ""
-    for i in range(0,len(toys)):
-        for j in toys[i]:
-            #'{0: <number}' is for format purposes
-            if j == "Name":
-                display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
-                continue
-            if j == "Feet":
-                display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
-                continue
-            display += str(j) + ": " + '{0: <10}'.format(str(toys[i][j]))
-        display += "\n"
-    return display
+    return toys
 
 # Insertion Sort
 def InsertionSort(toys):
@@ -45,3 +33,20 @@ def InsertionSort(toys):
 		toys[j + 1] = key
 
 	return toys
+
+# Function for displaying sorted items
+def display(toys):
+    display = ""
+    for i in range(0,len(toys)):
+        for j in toys[i]:
+            #'{0: <number}' is for format purposes
+            if j == "Name":
+                display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
+                continue
+            if j == "Feet":
+                display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
+                continue
+            display += str(j) + ": " + '{0: <10}'.format(str(toys[i][j]))
+        display += "\n"
+    return display
+
