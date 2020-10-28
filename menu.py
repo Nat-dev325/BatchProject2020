@@ -267,9 +267,30 @@ def playtime(toys):
     return toys
 
 def select_toy(toys):
-    return None
-def print_toys(toys):
-    return None
+	#the x is the last element in the list
+	x = toys[-1]
+	#a loop traversing though the keys and values of the last item in the list
+	for i,j in x.items():
+		#we return the last element in the list of toys
+		print(i, ": ", j)
+	#then we pop it
+	#toys.pop(len(toys)-1)
+	return(toys[-1])
+
+
+def print_toy (toys):
+	#checks if the list is not empty
+	if len(toys) == 0:
+		print("There are no toys in the list.")
+	else:
+		#will continue to print the Toy's attributes if the list is not empty
+		print("The toys: \n")
+		for i in range(len(toys)):
+			print("Name: ", toys[i]["Name"])
+			print("NumFeet: ", toys[i]["NumFeet"])
+			print("Species: ",toys[i]["Species"])
+			print("Height: ",toys[i]["Height"])
+			print("\n")
 
 def save(toys):
 
