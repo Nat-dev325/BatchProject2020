@@ -106,7 +106,7 @@ Toy Attributes:
 			
 			#CODE BLOCK FOR CHANGING TOY FEET
 			elif command == 4:
-				toys[get_index(toy_name)]["Feet"] = int(input("\nWhat is your toy's new number of feet? "))
+				toys[get_index(toy_name)]["NumFeet"] = int(input("\nWhat is your toy's new number of feet? "))
 				print("Number of feet attribute successfully edited!")
 			
 			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
@@ -169,7 +169,7 @@ def save():
 		name = toys[i]['Name']							#save the value of the current element 'Name' to name
 		species = toys[i]['Species']					#same
 		height = str(toys[i]['Height'])					#same
-		feet = str(toys[i]['Feet'])						#same
+		feet = str(toys[i]['NumFeet'])						#same
 		firstappearance = str(toys[i]['FirstAppearance']) #same
 		fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
 														#write the data in the file
@@ -184,7 +184,7 @@ def load():
 		dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
 		dict_toy["Species"] = toy_data[1]
 		dict_toy["Height"] = toy_data[2]
-		dict_toy["Feet"] = toy_data[3]
+		dict_toy["NumFeet"] = toy_data[3]
 		dict_toy["FirstAppearance"] = toy_data[4]
 		toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
 	
