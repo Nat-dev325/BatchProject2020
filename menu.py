@@ -160,12 +160,12 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 			print("""
 ================================================
 Toy Attributes:
-1. Name
-2. Species
-3. Height
-4. Number of Feet
-5. Movie of Character's First Appearance
-0. Exit
+(1) Name
+(2) Species
+(3) Height
+(4) Number of Feet
+(5) Movie of Character's First Appearance
+(0) Exit
 ================================================
 		""")
 			command = int(input("Which attribute do you want to edit?\nEnter command number: "))
@@ -232,11 +232,11 @@ Toy Attributes:
 def playtime(toys):
     print(
         "\n==SUBMENU=======================================\n"
-        + " (1)Name (Bubble Sort)\n"
-        + " (2)Height (Merge Sort)\n"
-        + " (3)Species (Insertion Sort)\n"
-        + " (4)First Movie Appearance  (Selection Sort)\n"
-        + " (5)Number of Feet (Quick Sort)\n"
+        + " (1) Name                     (Bubble Sort)\n"
+        + " (2) Height                   (Merge Sort)\n"
+        + " (3) Species                  (Insertion Sort)\n"
+        + " (4) First Movie Appearance   (Selection Sort)\n"
+        + " (5) Number of Feet           (Quick Sort)\n"
         + "================================================\n"
         )
     command_check = False
