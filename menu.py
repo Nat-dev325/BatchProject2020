@@ -267,30 +267,35 @@ def print_toys(toys):
     return None
 
 def save(toys):
-
-    fileHandler = open ("toys.txt", "w")				#make/access the file 'toys.txt' with writable mode
-    for i in range (len(toys)):							#for every element in the list 'toys'
-        name = toys[i]['Name']							#save the value of the current element 'Name' to name
-        species = toys[i]['Species']					#same
-        height = str(toys[i]['Height'])					#same
-        feet = str(toys[i]['NumFeet'])					#same
-        firstappearance = str(toys[i]['FirstAppearance']) #same
+    #make/access the file 'toys.txt' with writable mode
+    fileHandler = open ("toys.txt", "w")				
+    #writing every elements from the list 'toys' to the file 'toys.txt'
+    for i in range (len(toys)):							
+        name = toys[i]['Name']							
+        species = toys[i]['Species']					
+        height = str(toys[i]['Height'])					
+        feet = str(toys[i]['NumFeet'])					
+        firstappearance = str(toys[i]['FirstAppearance']) 
         fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
-    													#write the data in the file
+    													
     fileHandler.close()
     return toys
 
 def load(toys):
-    fileHandler = open ("toys.txt", "r")				#access the file 'toys.txt' with read mode
-    toys.clear()										#clear the existing elements to have the file data only
-    for line in fileHandler:							#accessing every line in the file						
-        toy_data = line[:-1].split(",")					#make list's elements by splitting using ","
-        dict_toy = {}									#create a dict that will contain the current line data
-        dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
+    #access the file 'toys.txt' with read mode
+    fileHandler = open ("toys.txt", "r")	
+    #clear the existing elements to have the file data only			
+    toys.clear()			
+    #saving every data seperated by "," into its keys							
+    for line in fileHandler:											
+        toy_data = line[:-1].split(",")					
+        dict_toy = {}									
+        dict_toy["Name"] = toy_data[0]					
         dict_toy["Species"] = toy_data[1]
         dict_toy["Height"] = toy_data[2]
         dict_toy["NumFeet"] = toy_data[3]
         dict_toy["FirstAppearance"] = toy_data[4]
-        toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
+        #appending the current line's elements to the main list 'toys'
+        toys.append(dict_toy)							
     fileHandler.close()
     return toys
