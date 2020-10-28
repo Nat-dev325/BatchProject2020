@@ -20,12 +20,59 @@ def menu():
     command_check = False
     while command_check == False: #This loop checks if the input is valid
         command = int(input("Enter command number(0-9): "))
-        if command in range(0,9):
+        if command in range(0,10):
             command_check = True
     return command
 
-def search_toys(toys):
-    return None
+# Search for Toy
+def searchToy(collection):
+    # a sub-menu showing the main criteria of the attributes from which a user can choose from
+    print("Which attribute do you want to search from? ")
+    print("[1] Name")
+    print("[2] Species")
+    print("[3] Height")
+    print("[4] Number of Feet")
+    print("[5] First Appearance")
+    # asking for the user choice
+    while True:
+        try:
+            user_choice = int(input("Enter your choice: "))
+            while user_choice > 5 or user_choice < 1:
+                user_choice = int(input("Invalid input. Enter your choice: "))
+            break
+        except:
+            print("Enter a number/integer.")
+    # the following if statements are used to store values in the attribute variable wherein each values corresponds to each keys of the dictionaries.
+    while True:
+        if user_choice == 1:
+            attribute = "Name"
+        elif user_choice == 2:
+            attribute = "Species"
+        elif user_choice == 3:
+            attribute = "Height"
+        elif user_choice == 4:
+            attribute = "Feet"
+        elif user_choice == 5:
+            attribute = "FirstAppearance"
+
+        # asking for the specific attribute of the toy from the user
+        specific_attribute = input(
+            "Enter the specific attribute you want to search for: "
+        )
+        print_count = 0
+        # a for loop with the range of 0 to the length of the list is used to be able to access each dictionaries in the list
+        for i in range(0, len(collection)):
+            values = str(collection[i][attribute]).lower()
+
+            if specific_attribute.lower() in values:
+                # the code "collection[i][attribute]" is utilized to access each values of the given key which is stored in the attribute variable.
+                if specific_attribute.lower() == str(collection[i][attribute]).lower():
+                    # if the specific attribute given by the user is equal to the value of the key stored in the attribute variable, then it will print all dictionary which includes that value.
+                    print(collection[i])
+                    print_count += 1
+        if print_count == 0:
+            print("Sorry, your given attribute does not exist.")
+        break
 
 def declutter(toys): #function that removes a toy from the list
     x = input("\nWhat toy do you want to remove? ")
@@ -37,9 +84,6 @@ def declutter(toys): #function that removes a toy from the list
                 print(attribute + ": " +str(toys[i][attribute]) +",", end=" ") #prints the attributes of the deleted object
             print("\n")
             del toys[i] #deletes the dict of the given input
-            print(toys) #FOR TESTING ONLY
-                        #to check if object is successfuly removed from the list
-                        #Remove this or add a // # // in front to prevent this code from manifesting
             return toys
     else: print("\n" + toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list      
 
@@ -300,7 +344,7 @@ def save(toys):
 
 def load(toys):
     #access the file 'toys.txt' with read mode
-    fileHandler = open ("toys.txt", "r")	
+    fileHandler = open("toys.txt", "r")	
     #clear the existing elements to have the file data only			
     toys.clear()			
     #saving every data seperated by "," into its keys							
@@ -315,4 +359,5 @@ def load(toys):
         #appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)							
     fileHandler.close()
+
     return toys

@@ -14,7 +14,7 @@ while True: #This loop is to ensure that the program does not just terminate aft
     command = menu.menu()
     
     if command == 1:
-        menu.search_toys(toys)
+        menu.searchToy(toys)
     elif command == 2:
         toys = menu.declutter(toys)
     elif command == 3:
@@ -31,7 +31,7 @@ while True: #This loop is to ensure that the program does not just terminate aft
     elif command == 8:
         menu.save(toys)
     elif command == 9:
-        menu.load(toys)
+        toys = menu.load(toys)
     elif command == 0:
         print(
             "\n================================================\n"
