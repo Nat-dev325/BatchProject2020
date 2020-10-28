@@ -4,9 +4,9 @@
 import menu
 import os
 toys = [
-    {"Name":"Woody","Species":"Human","Height":15.8,"Feet":2,"FirstAppearance":1},
-    {"Name":"Jessie","Species":"Human","Height":13.4,"Feet":2,"FirstAppearance":2},
-    {"Name":"Buzz Lightyear","Species":"Human","Height":11.43,"Feet":2,"FirstAppearance":1}
+    {"Name":"Woody","Species":"Human","Height":15.8,"NumFeet":2,"FirstAppearance":1},
+    {"Name":"Jessie","Species":"Human","Height":13.4,"NumFeet":2,"FirstAppearance":2},
+    {"Name":"Buzz Lightyear","Species":"Human","Height":11.43,"NumFeet":2,"FirstAppearance":1}
 ]
 os.system("cls")
 #This is the start of the main function
@@ -18,7 +18,7 @@ while True: #This loop is to ensure that the program does not just terminate aft
     elif command == 2:
         menu.declutter(toys)
     elif command == 3:
-        menu.add_toy(toys)
+        menu.addToys(toys)
     elif command == 4:
         menu.edit_toy(toys)
     elif command == 5:

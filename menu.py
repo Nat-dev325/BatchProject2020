@@ -1,5 +1,6 @@
 #This contains all of the functions for main.py
 import sort
+import string
 
 def menu():
     print(
@@ -25,10 +26,93 @@ def menu():
 
 def search_toys(toys):
     return None
+
+#function that removes a toy from the list
 def declutter(toys):
-    return None
-def add_toy(toys):
-    return None
+    toy_name = input("\nWhat toy do you want to remove? ")
+    #Finds the dictionary within the list that corresponds to the given input
+    for each_toy in toys:
+        if each_toy["Name"] == toy_name:
+            print("\n"+toy_name, "has been removed from the shelf\n") #Indicates that the object has been removed
+            for attribute in each_toy: #Displays the attributes of the object
+                print(attribute + ":" +str(each_toy[attribute]) +",", end=" ")
+            for i in range(len(toys)): #Delete/Removes the object from the list by finding a name that matches the given input  
+                if toys[i]["Name"] == toy_name:
+                    del toys[i]
+
+                    return toys
+            break   #prevents the iteration of the codes from "if each_toy" to "for i in range" and the else condition 
+                    #from manifesting if the Name is not corresponding to the current value of the "for each_toy" conditional
+    else: print(toy_name, "is not on the shelf") #Manifests when there is no corresponding object in the list
+
+def addToys(collection):
+    print("===========Adding Toy in Collection==========")
+    # initialization of dictionary
+    dictToy = {
+        "Name": "",
+        "Species": "",
+        "Height": 0,
+        "NumFeet": 0,
+        "FirstAppearance": 0,
+    }
+
+    # input name
+    name = input("Enter Toy Name: ")
+
+    # force the user to input a valid value type (int) and valid number of feet (cannot be less than 1)
+    while True:
+        try:
+            numFeet = int(input("Enter Toy Number of Feet: "))
+            while numFeet < 1:
+                numFeet = int(input("Invalid Input. \nEnter Toy Number of Feet: "))
+            break
+        except ValueError:
+            print("Enter an integer.")
+
+    # input species
+    species = input("Enter Toy Species: ")
+
+    # force the user to input a valid value type (float) and valid height (cannot be less than or equal to 0)
+    while True:
+        try:
+            height = float(input("Enter Toy Height: "))
+            while height <= 0:
+                height = float(input("Invalid Input. \nEnter Toy Height: "))
+            break
+        except ValueError:
+            print("Enter a number.")
+
+    # force the user to input a valid value type (int) and valid first appearance (can only enter either 1, 2, 3, or 4)
+    while True:
+        try:
+            firstAppearance = int(input("Enter Toy First Appearance: "))
+            while firstAppearance < 1 or firstAppearance > 4:
+                firstAppearance = int(
+                    input("Invalid Input. \nEnter Toy First Appearance: ")
+                )
+            break
+        except ValueError:
+            print("Enter an integer.")
+
+    # update the values in the dictionary
+    # string.capwords(<string>) was used to capitalize only the first letter of each word
+    dictToy["Name"] = string.capwords(name)
+    dictToy["Species"] = string.capwords(species)
+    dictToy["Height"] = height
+    dictToy["NumFeet"] = numFeet
+    dictToy["FirstAppearance"] = firstAppearance
+
+    # add dictToy to the original list of dictionaries
+    collection.append(dictToy)
+
+    # notify the user that they have successfully added a toy
+    print("\n" + name + " added in Collection!")
+
+    # print the attributes of the toy
+    print(dictToy)
+
+    return collection
+
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
 	toys = toys_list
 	#function within a function in order to access the names in the list of toys
@@ -165,13 +249,13 @@ def playtime(toys):
     elif command == 4:
         toys = sort.SelectionSort(toys)
     elif command == 5:
-        toys = sort.QuickSort(toys)
+        toys = sort.quickSort(toys,0,len(toys)-1)
     print(sort.display(toys))
     return toys
 
-def select_toy():
+def select_toy(toys):
     return None
-def print_toys():
+def print_toys(toys):
     return None
 
 def save(toys):
