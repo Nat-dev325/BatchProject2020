@@ -115,3 +115,22 @@ def mergeSort(toys):
             j += 1
             k += 1
     return toys
+
+# Selection Sort
+def SelectionSort(toys):
+    # iteration of the list
+    for i in range(0, len(toys)-1):
+        #setting the first element in the unsorted list as the default min value
+        min_value = i 
+
+        for j in range(i+1, len(toys)):
+            if toys[j]["FirstAppearance"] < toys[min_value]["FirstAppearance"]:
+                # new min value
+                min_value = j  
+
+        # new min value is no longer equal to default min value
+        if min_value != i:
+            # switching the values
+            toys[min_value], toys[i] = toys[i], toys[min_value] 
+
+    return toys

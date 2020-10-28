@@ -114,6 +114,7 @@ def addToys(collection):
     return collection
 
 def edit_toy(toys_list): #toys_list should be the list containing the dictionaries
+	print("==========EDITING TOYS IN SELECTION============")
 	toys = toys_list
 	#function within a function in order to access the names in the list of toys
 	def get_names(): 
@@ -133,9 +134,9 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 	#checks if there are toys in the first place. if none, ends the function
 	if len(toys) == 0:
 		return print("There are no toys to edit :(")
-    
-    print("==========EDITING TOYS IN SELECTION============")
-    toy_name = ""
+   	else: print("==========EDITING TOYS IN SELECTION============")
+   	toy_name = ""
+
         
 	#while loop to check if the toy name exists
 	while toy_name.lower() not in get_names(): 
@@ -144,32 +145,25 @@ def edit_toy(toys_list): #toys_list should be the list containing the dictionari
 		#shows the list of toys if toy is not found
 		if toy_name.lower() not in get_names(): 
 			print("\nOh no! Toy not found :(\nYour toys are:\n")
-            display = ""
-            for i in range(0,len(toys)):
-                for j in toys[i]:
-                    if j == "Name":
-                        display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
-                        continue
-                    if j == "Feet":
-                        display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
-                        continue
-                    display += str(j) + ": " + '{0: <16}'.format(str(toys[i][j]))
-                display += "\n"
-            print(display)
-			# for dicts in toys:
-			# 	for attribute in dicts:
-			# 		if attribute == "FirstAppearance":
-			# 			print("(First Seen in Toy Story", dicts[attribute], end=")")
-			# 		else: print(attribute+":", dicts[attribute], end="\t")
-			# 	print()
-
-
+			display = ""
+			for i in range(0,len(toys)):
+				for j in toys[i]:
+					if j == "Name":
+						display += str(j) + ": " + '{0: <15}'.format(str(toys[i][j]))
+						continue
+					if j == "Feet":
+						display += str(j) + ": " + '{0: <6}'.format(str(toys[i][j]))
+						continue
+					display += str(j) + ": " + '{0: <16}'.format(str(toys[i][j]))
+				display += "\n"
+			print(display)
 	print("Toy found!")
 	
 	#try except while true loop so that one can edit multiple attributes
 	while True: 
 		try:
 			print("""
+================================================
 Toy Attributes:
 	1. Name
 	2. Species
@@ -177,6 +171,7 @@ Toy Attributes:
 	4. Number of Feet
 	5. Movie of Character's First Appearance
 	0. Exit
+================================================
 			""")
 			
 			command = int(input("Which attribute do you want to edit?\nEnter command number: "))
@@ -293,30 +288,35 @@ def print_toy (toys):
 			print("\n")
 
 def save(toys):
-
-    fileHandler = open ("toys.txt", "w")				#make/access the file 'toys.txt' with writable mode
-    for i in range (len(toys)):							#for every element in the list 'toys'
-        name = toys[i]['Name']							#save the value of the current element 'Name' to name
-        species = toys[i]['Species']					#same
-        height = str(toys[i]['Height'])					#same
-        feet = str(toys[i]['NumFeet'])					#same
-        firstappearance = str(toys[i]['FirstAppearance']) #same
+    #make/access the file 'toys.txt' with writable mode
+    fileHandler = open ("toys.txt", "w")				
+    #writing every elements from the list 'toys' to the file 'toys.txt'
+    for i in range (len(toys)):							
+        name = toys[i]['Name']							
+        species = toys[i]['Species']					
+        height = str(toys[i]['Height'])					
+        feet = str(toys[i]['NumFeet'])					
+        firstappearance = str(toys[i]['FirstAppearance']) 
         fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
-    													#write the data in the file
+    													
     fileHandler.close()
     return toys
 
 def load(toys):
-    fileHandler = open ("toys.txt", "r")				#access the file 'toys.txt' with read mode
-    toys.clear()										#clear the existing elements to have the file data only
-    for line in fileHandler:							#accessing every line in the file						
-        toy_data = line[:-1].split(",")					#make list's elements by splitting using ","
-        dict_toy = {}									#create a dict that will contain the current line data
-        dict_toy["Name"] = toy_data[0]					#saving the specific data into its keys
+    #access the file 'toys.txt' with read mode
+    fileHandler = open ("toys.txt", "r")	
+    #clear the existing elements to have the file data only			
+    toys.clear()			
+    #saving every data seperated by "," into its keys							
+    for line in fileHandler:											
+        toy_data = line[:-1].split(",")					
+        dict_toy = {}									
+        dict_toy["Name"] = toy_data[0]					
         dict_toy["Species"] = toy_data[1]
         dict_toy["Height"] = toy_data[2]
         dict_toy["NumFeet"] = toy_data[3]
         dict_toy["FirstAppearance"] = toy_data[4]
-        toys.append(dict_toy)							#appending the current line's dict to the main list 'toys'
+        #appending the current line's elements to the main list 'toys'
+        toys.append(dict_toy)							
     fileHandler.close()
     return toys
