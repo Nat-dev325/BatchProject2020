@@ -179,87 +179,56 @@ Toy Attributes:
 					print("That toy already exists!")
 				else:
 						#updates the dictionary of index from function get_index() and the key of "Name"
-						toys[get_index(toy_name)]["Name"] = new_toys_name 
+						toys[get_index(toy_name)]["Name"] = string.capwords(new_toys_name)
 						print("Toy's name successfully edited!")
 						toy_name = new_toys_name #needed part in order to update the variable toy_name
-		
+			
 			#CODE BLOCK FOR CHANGING TOY SPECIES
 			elif command == 2:
 			#updates the dictionary of index from function get_index() and the key of "Species"
-					toys[get_index(toy_name)]["Species"] = input("\nWhat is your toy's new species? ") 
+					toys[get_index(toy_name)]["Species"] = string.capwords(input("\nWhat is your toy's new species? "))
 					print("Species attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING TOY HEIGHT
+			
+			#CODE BLOCK FOR CHANGING TOY HEIGHT
 			elif command == 3:
-			 #updates the dictionary of index from function get_index() and the key of "Height"
+			#updates the dictionary of index from function get_index() and the key of "Height"
 			 		toys[get_index(toy_name)]["Height"] = float(input("\nWhat is your toy's new height? "))
 			 		print("Height attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING TOY FEET
+			
+			#CODE BLOCK FOR CHANGING TOY FEET
 			elif command == 4:
 				toys[get_index(toy_name)]["NumFeet"] = int(input("\nWhat is your toy's new number of feet? "))
 				print("Number of feet attribute successfully edited!")
-		
-		#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
-			elif command == 5:
-			#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
-					movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
-					if movie_number < 5 and movie_number > 0:
-						toys[get_index(toy_name)]["FirstAppearance"] = movie_number
-						print("First Movie Appearance attribute successfully edited!")
-					else:
-
-							#updates the dictionary of index from function get_index() and the key of "Name"
-							toys[get_index(toy_name)]["Name"] = string.capwords(new_toys_name )
-							print("Toy's name successfully edited!")
-							toy_name = new_toys_name #needed part in order to update the variable toy_name
-			
-				#CODE BLOCK FOR CHANGING TOY SPECIES
-				elif command == 2:
-				#updates the dictionary of index from function get_index() and the key of "Species"
-						toys[get_index(toy_name)]["Species"] = string.capwords(input("\nWhat is your toy's new species? "))
-						print("Species attribute successfully edited!")
-			
-			#CODE BLOCK FOR CHANGING TOY HEIGHT
-				elif command == 3:
-				 #updates the dictionary of index from function get_index() and the key of "Height"
-				 		toys[get_index(toy_name)]["Height"] = float(input("\nWhat is your toy's new height? "))
-				 		print("Height attribute successfully edited!")
-			
-			#CODE BLOCK FOR CHANGING TOY FEET
-				elif command == 4:
-					toys[get_index(toy_name)]["NumFeet"] = int(input("\nWhat is your toy's new number of feet? "))
-					print("Number of feet attribute successfully edited!")
 			
 			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
-				elif command == 5:
-				#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
-						while True:
-							try:
-								movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
-								if movie_number < 5 and movie_number > 0:
-									toys[get_index(toy_name)]["FirstAppearance"] = movie_number
-									print("First Movie Appearance attribute successfully edited!")
-									break
-								else: print("Please enter a Toy Story movie")
-							except:
-								print("Please enter a Toy Story movie")
+			elif command == 5:
+			#updates the dictionary of index from function get_index() and the key of "FirstAppearance"
+					while True:
+						try:
+							movie_number = int(input("\nWhat Toy Story movie did the toy first appear? "))
+							if movie_number < 5 and movie_number > 0:
+								toys[get_index(toy_name)]["FirstAppearance"] = movie_number
+								print("First Movie Appearance attribute successfully edited!")
+								break
+							else: print("Please enter a Toy Story movie")
+						except:
+							print("Please enter a Toy Story movie")
 			
 			#CODE BLOCK TO EXIT EDITING
-				elif command == 0:
-					print("\n\nChanges have been saved!\nCurrent toy details are as follows:\n")
+			elif command == 0:
+				print("\n\nChanges have been saved!\nCurrent toy details are as follows:\n")
 
 				#For loop to go through all attributes of said toy for printing
-					for attribute in toys[get_index(toy_name)]:
-						if attribute == "FirstAppearance":
-							print("First Seen in Toy Story", toys[get_index(toy_name)][attribute], end="")
-						else: 
-							print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
-					print("\n\n")
-					return toys[get_index(toy_name)]
+				for attribute in toys[get_index(toy_name)]:
+					if attribute == "FirstAppearance":
+						print("First Seen in Toy Story", toys[get_index(toy_name)][attribute], end="")
+					else: 
+						print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
+				print("\n\n")
+				return toys[get_index(toy_name)]
 			
-			except:
-					print("There seems to be an error in the input") #if there is an error, print this. Example: if a string was given for height
+		except:
+				print("There seems to be an error in the input") #if there is an error, print this. Example: if a string was given for height
 
 
 def playtime(toys):
