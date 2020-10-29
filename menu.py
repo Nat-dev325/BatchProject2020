@@ -82,7 +82,7 @@ def searchToy(collection):
 
     # Search using attribute feet
     elif user_choice == 4:
-        attribute = "NumFeet"
+        attribute = "No. Feet"
         # Force input an integer
         while True:
             try:
@@ -126,7 +126,7 @@ def addToys(collection):
         "Name": "",
         "Species": "",
         "Height": 0,
-        "NumFeet": 0,
+        "No. Feet": 0,
         "FirstAppearance": 0,
     }
 
@@ -173,7 +173,7 @@ def addToys(collection):
     dictToy["Name"] = string.capwords(name)
     dictToy["Species"] = string.capwords(species)
     dictToy["Height"] = height
-    dictToy["NumFeet"] = numFeet
+    dictToy["No. Feet"] = numFeet
     dictToy["FirstAppearance"] = firstAppearance
 
     # add dictToy to the original list of dictionaries
@@ -268,7 +268,7 @@ Toy Attributes:
 			
             #CODE BLOCK FOR CHANGING TOY FEET
             elif command == 4:
-                toys[get_index(toy_name)]["NumFeet"] = int(input("\nWhat is your toy's new number of feet? "))
+                toys[get_index(toy_name)]["No. Feet"] = int(input("\nWhat is your toy's new number of feet? "))
                 print("Number of feet attribute successfully edited!")
 			
 			#CODE BLOCK FOR CHANGING MOVIE APPEARANCE
@@ -292,7 +292,7 @@ Toy Attributes:
 				#For loop to go through all attributes of said toy for printing
                 for attribute in toys[get_index(toy_name)]:
                     if attribute == "FirstAppearance":
-                        print("(First Seen in Toy Story)", toys[get_index(toy_name)][attribute], end="")
+                        print("(First Seen in Toy Story", toys[get_index(toy_name)][attribute], end=")")
                     else: 
                         print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
                 print("\n\n")
@@ -350,7 +350,7 @@ def print_toy(toys):
         print("The toys: \n")
         for i in range(len(toys)):
             print("Name:", toys[i]["Name"])
-            print("Number of Feet:", toys[i]["NumFeet"])
+            print("Number of Feet:", toys[i]["No. Feet"])
             print("Species:",toys[i]["Species"])
             print("Height:",toys[i]["Height"])
             print("First Appearance:", toys[i]["FirstAppearance"])
@@ -364,7 +364,7 @@ def save(toys):
         name = toys[i]['Name']							
         species = toys[i]['Species']					
         height = str(toys[i]['Height'])					
-        feet = str(toys[i]['NumFeet'])					
+        feet = str(toys[i]['No. Feet'])					
         firstappearance = str(toys[i]['FirstAppearance']) 
         fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
     													
@@ -383,7 +383,7 @@ def load(toys):
         dict_toy["Name"] = toy_data[0]					
         dict_toy["Species"] = toy_data[1]
         dict_toy["Height"] = float(toy_data[2])
-        dict_toy["NumFeet"] = int(toy_data[3])
+        dict_toy["No. Feet"] = int(toy_data[3])
         dict_toy["FirstAppearance"] = int(toy_data[4])
         #appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)							
