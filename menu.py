@@ -70,7 +70,7 @@ def searchToy(collection):
                 user_choice = int(input("Invalid input. \nEnter your choice (1-5): "))
             break
         except:
-            print("Enter an integer from 0 t 9.")
+            print("Enter an integer from 1 to 5.")
 
     # Search using attribute name
     # string.capwords(<string>) was used to capitalize only the first letter of each word
@@ -134,7 +134,7 @@ def declutter(toys):  # function that removes a toy from the list
             print("\n" + toy_name, "has been removed from the shelf\n")
             for attribute in toys[i]:
                 # prints the attributes of the deleted object
-                print(attribute + ": " + str(toys[i][attribute]) + ",", end=" ")
+                print(attribute + ": " + str(toys[i][attribute]))
             # deletes the dict of the given input
             del toys[i]
             print()
@@ -189,14 +189,14 @@ def addToys(collection):
     # force the user to input a valid value type (int) and valid first appearance (can only enter either 1, 2, 3, or 4)
     while True:
         try:
-            firstAppearance = int(input("Enter Toy's First Appearance: "))
+            firstAppearance = int(input("Enter Toy's First Appearance (1-4): "))
             while firstAppearance < 1 or firstAppearance > 4:
                 firstAppearance = int(
-                    input("Invalid Input. \nEnter Toy's First Appearance: ")
+                    input("Invalid Input. \nEnter Toy's First Appearance (1-4): ")
                 )
             break
         except ValueError:
-            print("Enter an integer.")
+            print("Enter an integer from 1 to 4.")
 
     # update the values in the dictionary
     dictToy["Name"] = string.capwords(name)
@@ -205,14 +205,16 @@ def addToys(collection):
     dictToy["No. Feet"] = numFeet
     dictToy["FirstAppearance"] = firstAppearance
 
-    # add dictToy to the original list of dictionaries
-    collection.append(dictToy)
-
     # notify the user that they have successfully added a toy
     print("\n" + name + " added in Collection!")
 
     # print the attributes of the toy
-    print(dictToy)
+    print()
+    print("Name:", dictToy["Name"])
+    print("Species:", dictToy["Species"])
+    print("Height:", dictToy["Height"])
+    print("Number of Feet:", dictToy["No. Feet"])
+    print("First Appearance in Toy Story:", dictToy["FirstAppearance"])
 
     return dictToy
 
@@ -306,13 +308,9 @@ Toy Attributes:
 
             # CODE BLOCK FOR CHANGING TOY FEET
             elif command == 4:
-<<<<<<< HEAD
-                toys[get_index(toy_name)]["NumFeet"] = int(
+                toys[get_index(toy_name)]["No. Feet"] = int(
                     input("\nWhat is your toy's new number of feet? ")
                 )
-=======
-                toys[get_index(toy_name)]["No. Feet"] = int(input("\nWhat is your toy's new number of feet? "))
->>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
                 print("Number of feet attribute successfully edited!")
 
             # CODE BLOCK FOR CHANGING MOVIE APPEARANCE
@@ -343,11 +341,10 @@ Toy Attributes:
                 # For loop to go through all attributes of said toy for printing
                 for attribute in toys[get_index(toy_name)]:
                     if attribute == "FirstAppearance":
-<<<<<<< HEAD
                         print(
-                            "(First Seen in Toy Story)",
+                            "(First Seen in Toy Story",
                             toys[get_index(toy_name)][attribute],
-                            end="",
+                            end=")",
                         )
                     else:
                         print(
@@ -355,11 +352,6 @@ Toy Attributes:
                             toys[get_index(toy_name)][attribute],
                             end="\n",
                         )
-=======
-                        print("(First Seen in Toy Story", toys[get_index(toy_name)][attribute], end=")")
-                    else: 
-                        print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
->>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
                 print("\n\n")
                 return toys[get_index(toy_name)]
 
@@ -424,21 +416,14 @@ def print_toy(toys):
         print("The toys: \n")
         for i in range(len(toys)):
             print("Name:", toys[i]["Name"])
-<<<<<<< HEAD
-            print("Number of Feet:", toys[i]["NumFeet"])
+            print("Number of Feet:", toys[i]["No. Feet"])
             print("Species:", toys[i]["Species"])
             print("Height:", toys[i]["Height"])
-=======
-            print("Number of Feet:", toys[i]["No. Feet"])
-            print("Species:",toys[i]["Species"])
-            print("Height:",toys[i]["Height"])
->>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
             print("First Appearance:", toys[i]["FirstAppearance"])
             print()
 
 
 def save(toys):
-<<<<<<< HEAD
     # make/access the file 'toys.txt' with writable mode
     fileHandler = open("toys.txt", "w")
     # writing every elements from the list 'toys' to the file 'toys.txt'
@@ -446,7 +431,7 @@ def save(toys):
         name = toys[i]["Name"]
         species = toys[i]["Species"]
         height = str(toys[i]["Height"])
-        feet = str(toys[i]["NumFeet"])
+        feet = str(toys[i]["No. Feet"])
         firstappearance = str(toys[i]["FirstAppearance"])
         fileHandler.write(
             name
@@ -461,19 +446,6 @@ def save(toys):
             + "\n"
         )
 
-=======
-    #make/access the file 'toys.txt' with writable mode
-    fileHandler = open ("toys.txt", "w")				
-    #writing every elements from the list 'toys' to the file 'toys.txt'
-    for i in range (len(toys)):							
-        name = toys[i]['Name']							
-        species = toys[i]['Species']					
-        height = str(toys[i]['Height'])					
-        feet = str(toys[i]['No. Feet'])					
-        firstappearance = str(toys[i]['FirstAppearance']) 
-        fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
-    													
->>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
     fileHandler.close()
     return toys
 

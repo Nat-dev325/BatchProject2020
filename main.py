@@ -5,33 +5,27 @@ import menu
 import os
 
 toys = [
-<<<<<<< HEAD
     {
         "Name": "Woody",
         "Species": "Human",
         "Height": 15.8,
-        "NumFeet": 2,
+        "No. Feet": 2,
         "FirstAppearance": 1,
     },
     {
         "Name": "Jessie",
         "Species": "Human",
         "Height": 13.4,
-        "NumFeet": 2,
+        "No. Feet": 2,
         "FirstAppearance": 2,
     },
     {
         "Name": "Buzz Lightyear",
         "Species": "Human",
         "Height": 11.43,
-        "NumFeet": 2,
+        "No. Feet": 2,
         "FirstAppearance": 1,
     },
-=======
-    {"Name":"Woody","Species":"Human","Height":15.8,"No. Feet":2,"FirstAppearance":1},
-    {"Name":"Jessie","Species":"Human","Height":13.4,"No. Feet":2,"FirstAppearance":2},
-    {"Name":"Buzz Lightyear","Species":"Human","Height":11.43,"No. Feet":2,"FirstAppearance":1}
->>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
 ]
 os.system("cls")
 # This is the start of the main function
