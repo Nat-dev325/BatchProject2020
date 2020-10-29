@@ -447,6 +447,7 @@ def save(toys):
         )
 
     fileHandler.close()
+    print("\nFile saved.")
     return toys
 
 
@@ -467,5 +468,5 @@ def load(toys):
         # appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)
     fileHandler.close()
-
+    print("\nFile loaded.")
     return toys
