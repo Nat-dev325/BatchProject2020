@@ -56,10 +56,10 @@ def display(toys):
 def partition(list, low, high):
     i = low - 1
     temp = list[high]
-    pivot = temp["NumFeet"]
+    pivot = temp["No. Feet"]
     for j in range(low, high):
         temp = list[j]
-        if temp["NumFeet"] < pivot:  # determines which number of feet is smaller
+        if temp["No. Feet"] < pivot:  # determines which number of feet is smaller
             i = i + 1
             list[i], list[j] = list[j], list[i]  # swap
     list[i + 1], list[high] = list[high], list[i + 1]

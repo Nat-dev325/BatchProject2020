@@ -41,7 +41,7 @@ def searchToy(collection):
                 print("Name:", collection[i]["Name"])
                 print("Species:", collection[i]["Species"])
                 print("Height:", collection[i]["Height"])
-                print("Number of Feet:", collection[i]["NumFeet"])
+                print("Number of Feet:", collection[i]["No. Feet"])
                 print(
                     "First Appearance in Toy Story:", collection[i]["FirstAppearance"]
                 )
@@ -100,7 +100,7 @@ def searchToy(collection):
 
     # Search using attribute feet
     elif user_choice == 4:
-        attribute = "NumFeet"
+        attribute = "No. Feet"
         # Force input an integer
         while True:
             try:
@@ -152,7 +152,7 @@ def addToys(collection):
         "Name": "",
         "Species": "",
         "Height": 0,
-        "NumFeet": 0,
+        "No. Feet": 0,
         "FirstAppearance": 0,
     }
 
@@ -166,22 +166,22 @@ def addToys(collection):
     # force the user to input a valid value type (int) and valid number of feet (cannot be less than 1)
     while True:
         try:
-            numFeet = int(input("Enter Toy Number of Feet: "))
+            numFeet = int(input("Enter Toy's Number of Feet: "))
             while numFeet < 1:
-                numFeet = int(input("Invalid Input. \nEnter To's' Number of Feet: "))
+                numFeet = int(input("Invalid Input. \nEnter Toy's Number of Feet: "))
             break
         except ValueError:
             print("Enter an integer.")
 
     # input species
-    species = string.capwords(input("Enter Toy Species: "))
+    species = string.capwords(input("Enter Toy's Species: "))
 
     # force the user to input a valid value type (float) and valid height (cannot be less than or equal to 0)
     while True:
         try:
-            height = float(input("Enter Toy Height: "))
+            height = float(input("Enter Toy's Height: "))
             while height <= 0:
-                height = float(input("Invalid Input. \nEnter Toy Height: "))
+                height = float(input("Invalid Input. \nEnter Toy's Height: "))
             break
         except ValueError:
             print("Enter a number.")
@@ -189,10 +189,10 @@ def addToys(collection):
     # force the user to input a valid value type (int) and valid first appearance (can only enter either 1, 2, 3, or 4)
     while True:
         try:
-            firstAppearance = int(input("Enter Toy First Appearance: "))
+            firstAppearance = int(input("Enter Toy's First Appearance: "))
             while firstAppearance < 1 or firstAppearance > 4:
                 firstAppearance = int(
-                    input("Invalid Input. \nEnter Toy First Appearance: ")
+                    input("Invalid Input. \nEnter Toy's First Appearance: ")
                 )
             break
         except ValueError:
@@ -202,7 +202,7 @@ def addToys(collection):
     dictToy["Name"] = string.capwords(name)
     dictToy["Species"] = string.capwords(species)
     dictToy["Height"] = height
-    dictToy["NumFeet"] = numFeet
+    dictToy["No. Feet"] = numFeet
     dictToy["FirstAppearance"] = firstAppearance
 
     # add dictToy to the original list of dictionaries
@@ -306,9 +306,13 @@ Toy Attributes:
 
             # CODE BLOCK FOR CHANGING TOY FEET
             elif command == 4:
+<<<<<<< HEAD
                 toys[get_index(toy_name)]["NumFeet"] = int(
                     input("\nWhat is your toy's new number of feet? ")
                 )
+=======
+                toys[get_index(toy_name)]["No. Feet"] = int(input("\nWhat is your toy's new number of feet? "))
+>>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
                 print("Number of feet attribute successfully edited!")
 
             # CODE BLOCK FOR CHANGING MOVIE APPEARANCE
@@ -339,6 +343,7 @@ Toy Attributes:
                 # For loop to go through all attributes of said toy for printing
                 for attribute in toys[get_index(toy_name)]:
                     if attribute == "FirstAppearance":
+<<<<<<< HEAD
                         print(
                             "(First Seen in Toy Story)",
                             toys[get_index(toy_name)][attribute],
@@ -350,6 +355,11 @@ Toy Attributes:
                             toys[get_index(toy_name)][attribute],
                             end="\n",
                         )
+=======
+                        print("(First Seen in Toy Story", toys[get_index(toy_name)][attribute], end=")")
+                    else: 
+                        print(attribute+":", toys[get_index(toy_name)][attribute], end="\n")
+>>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
                 print("\n\n")
                 return toys[get_index(toy_name)]
 
@@ -414,14 +424,21 @@ def print_toy(toys):
         print("The toys: \n")
         for i in range(len(toys)):
             print("Name:", toys[i]["Name"])
+<<<<<<< HEAD
             print("Number of Feet:", toys[i]["NumFeet"])
             print("Species:", toys[i]["Species"])
             print("Height:", toys[i]["Height"])
+=======
+            print("Number of Feet:", toys[i]["No. Feet"])
+            print("Species:",toys[i]["Species"])
+            print("Height:",toys[i]["Height"])
+>>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
             print("First Appearance:", toys[i]["FirstAppearance"])
             print()
 
 
 def save(toys):
+<<<<<<< HEAD
     # make/access the file 'toys.txt' with writable mode
     fileHandler = open("toys.txt", "w")
     # writing every elements from the list 'toys' to the file 'toys.txt'
@@ -444,6 +461,19 @@ def save(toys):
             + "\n"
         )
 
+=======
+    #make/access the file 'toys.txt' with writable mode
+    fileHandler = open ("toys.txt", "w")				
+    #writing every elements from the list 'toys' to the file 'toys.txt'
+    for i in range (len(toys)):							
+        name = toys[i]['Name']							
+        species = toys[i]['Species']					
+        height = str(toys[i]['Height'])					
+        feet = str(toys[i]['No. Feet'])					
+        firstappearance = str(toys[i]['FirstAppearance']) 
+        fileHandler.write(name + ',' + species + ',' + height + ',' + feet +  ',' + firstappearance + '\n')
+    													
+>>>>>>> b9cee616148c261c57f7ba4acc7d229fabd6e703
     fileHandler.close()
     return toys
 
@@ -460,7 +490,7 @@ def load(toys):
         dict_toy["Name"] = toy_data[0]
         dict_toy["Species"] = toy_data[1]
         dict_toy["Height"] = float(toy_data[2])
-        dict_toy["NumFeet"] = int(toy_data[3])
+        dict_toy["No. Feet"] = int(toy_data[3])
         dict_toy["FirstAppearance"] = int(toy_data[4])
         # appending the current line's elements to the main list 'toys'
         toys.append(dict_toy)
