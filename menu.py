@@ -22,7 +22,7 @@ def menu():
         try:
             command = int(input("Enter command number (0-9): "))
             while command > 9 or command < 0:
-                command = int(input("Invalid input. \nEnter command number (0,9): "))
+                command = int(input("Invalid input. \nEnter command number (0-9): "))
             break
         except:
             print("\nEnter an integer from 0 to 9.")
