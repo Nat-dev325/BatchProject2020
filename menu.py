@@ -252,7 +252,7 @@ def edit_toy(toys):  # toys_list should be the list containing the dictionaries
 
     # checks if there are toys in the first place. if none, ends the function
     if len(toys) == 0:
-        return print("There are no toys to edit :(")
+        return print("\nThere are no toys to edit :(")
 
     toy_name = ""
 
@@ -378,7 +378,7 @@ def playtime(toys):
     if len(toys) == 0:
         print(
             """\n==================Playtime======================
-No playtime when the collection of toys is empty."""
+\nNo playtime when the collection of toys is empty."""
             )
         return toys
     print(
