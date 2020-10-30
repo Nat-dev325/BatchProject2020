@@ -23,8 +23,9 @@ def InsertionSort(toys):
         # Index of the values for the key to compare to
         j = i - 1
 
-        # Loop while the key is unsorted in the sorted list
+        # Loop while the key is unsorted when placed in the sorted list
         while j >= 0 and (key["Species"] < toys[j]["Species"]):
+            # Move sorted items to the right
             toys[i] = toys[j]
             j = j - 1
             i = i - 1

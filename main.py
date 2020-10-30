@@ -4,29 +4,8 @@
 import menu
 import os
 
-toys = [
-    {
-        "Name": "Woody",
-        "Species": "Human",
-        "Height": 15.8,
-        "No. Feet": 2,
-        "FirstAppearance": 1,
-    },
-    {
-        "Name": "Jessie",
-        "Species": "Human",
-        "Height": 13.4,
-        "No. Feet": 2,
-        "FirstAppearance": 2,
-    },
-    {
-        "Name": "Buzz Lightyear",
-        "Species": "Human",
-        "Height": 11.43,
-        "No. Feet": 2,
-        "FirstAppearance": 1,
-    },
-]
+# Initialize an empty list
+toys = []
 os.system("cls")
 # This is the start of the main function
 while (
@@ -40,7 +19,8 @@ while (
         toys = menu.declutter(toys)
     elif command == 3:
         added_toy = menu.addToys(toys)
-        toys.append(added_toy)
+        if added_toy != None:
+            toys.append(added_toy)
     elif command == 4:
         menu.edit_toy(toys)
     elif command == 5:

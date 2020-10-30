@@ -25,7 +25,7 @@ def menu():
                 command = int(input("Invalid input. \nEnter command number (0,9): "))
             break
         except:
-            print("Enter an integer from 0 to 9.")
+            print("\nEnter an integer from 0 to 9.")
     return command
 
 
@@ -49,6 +49,14 @@ def searchToy(collection):
         # if nothing is printed, print toSearch does not exist
         if search_count == 0:
             print("%s does not exist." % toSearch)
+
+    # Checking if the collection is empty
+    if len(collection) == 0:
+        print(
+            """\n=========Searching Toy in Collection============\n
+Collection is currently empty, please add or load the toys."""
+            )
+        return None
 
     # a sub-menu showing the main criteria of the attributes from which a user can choose from
 
@@ -125,6 +133,10 @@ def searchToy(collection):
 
 def declutter(toys):  # function that removes a toy from the list
     print("\n===========Decluttering the Collection==========\n")
+    # Check if the list is currently empty
+    if len(toys) == 0:
+        print("There are no items to remove. Please add or load toys.")
+        return toys
     x = input("What toy do you want to remove? ")
     toy_name = string.capwords(x)
     # Finds the dictionary within the list that corresponds to the given input
@@ -162,7 +174,7 @@ def addToys(collection):
     for i in range(len(collection)):
         if name == collection[i]["Name"]:
             print("Unable to add.", name, "is already in the collection.")
-            return collection
+            return None
     # force the user to input a valid value type (int) and valid number of feet (cannot be less than 1)
     while True:
         try:
@@ -362,6 +374,13 @@ Toy Attributes:
 
 
 def playtime(toys):
+    # Check if the list is empty
+    if len(toys) == 0:
+        print(
+            """\n==================Playtime======================
+No playtime when the collection of toys is empty."""
+            )
+        return toys
     print(
         """\n==================Playtime======================
  (1) Name                     (Bubble Sort)
@@ -371,6 +390,7 @@ def playtime(toys):
  (5) Number of Feet           (Quick Sort)
 ================================================\n"""
     )
+    
     # This loop forces the user to enter a valid input
     while True:
         try:
@@ -397,13 +417,17 @@ def playtime(toys):
 
 def select_toy(toys):
     print("\n============Dequeuing Collection================\n")
+    # checking if there is any item on the list
+    if len(toys) == 0:
+        print("No toys to select from. Please add or load toys.")
+        return None
     # the x is the last element in the list
     x = toys[0]
     # a loop traversing though the keys and values of the last item in the list
     for i, j in x.items():
         # we return the last element in the list of toys
         print(i, "\b: ", j)
-    return toys[0]
+    return toys.pop(0)
 
 
 def print_toy(toys):
@@ -452,21 +476,26 @@ def save(toys):
 
 
 def load(toys):
-    # access the file 'toys.txt' with read mode
-    fileHandler = open("toys.txt", "r")
-    # clear the existing elements to have the file data only
-    toys.clear()
-    # saving every data seperated by "," into its keys
-    for line in fileHandler:
-        toy_data = line[:-1].split(",")
-        dict_toy = {}
-        dict_toy["Name"] = toy_data[0]
-        dict_toy["Species"] = toy_data[1]
-        dict_toy["Height"] = float(toy_data[2])
-        dict_toy["No. Feet"] = int(toy_data[3])
-        dict_toy["FirstAppearance"] = int(toy_data[4])
-        # appending the current line's elements to the main list 'toys'
-        toys.append(dict_toy)
-    fileHandler.close()
-    print("\nFile loaded.")
-    return toys
+    try:
+        # access the file 'toys.txt' with read mode
+        fileHandler = open("toys.txt", "r")
+        # clear the existing elements to have the file data only
+        toys.clear()
+        # saving every data seperated by "," into its keys
+        for line in fileHandler:
+            toy_data = line[:-1].split(",")
+            dict_toy = {}
+            dict_toy["Name"] = toy_data[0]
+            dict_toy["Species"] = toy_data[1]
+            dict_toy["Height"] = float(toy_data[2])
+            dict_toy["No. Feet"] = int(toy_data[3])
+            dict_toy["FirstAppearance"] = int(toy_data[4])
+            # appending the current line's elements to the main list 'toys'
+            toys.append(dict_toy)
+        fileHandler.close()
+        print("\nFile loaded.")
+        return toys
+    # If .txt doesn't exist
+    except:
+        print("toys.txt cannot be read. Try saving first.")
+        return toys
